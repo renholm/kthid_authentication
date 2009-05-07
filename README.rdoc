@@ -1,10 +1,8 @@
 == Install and use
 
-=== 1. Install the Authlogic Facebook Connect plugin
+=== 1. Install the the plugin
 
-  $ script/plugin install git://github.com/kalasjocke/authlogic_facebook_connect.git
-  
-This plugin should soon be packed inside a gem.
+  $ script/plugin install git://github.com/renholm/kthid_authentication.git
 
 === 2. Make some changes to your database
 
