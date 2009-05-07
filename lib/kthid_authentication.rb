@@ -1,7 +1,3 @@
-#require 'net/http'
-#require 'net/https'
-#require 'uri'
-
 require File.dirname(__FILE__) + '/kthid_authentication/result'
 require File.dirname(__FILE__) + '/kthid_authentication/account'
 
