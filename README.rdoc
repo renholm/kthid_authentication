@@ -1,0 +1,35 @@
+== Install and use
+
+=== 1. Install the Authlogic Facebook Connect plugin
+
+  $ script/plugin install git://github.com/kalasjocke/authlogic_facebook_connect.git
+  
+This plugin should soon be packed inside a gem.
+
+=== 2. Make some changes to your database
+
+  class AddKthIdentifierToUser < ActiveRecord::Migration
+    def self.up
+      add_column :users, :kth_identifier, :string, :limit => 10
+    end
+  
+    def self.down
+      remove_column :users, :kth_identifier
+    end
+  end
+
+=== 3. Use it!
+
+	authenticate_with_kthid(:service => new_sessions_url) do |result,account|
+	  if result.successful?
+	    user = User.find_or_initialize_by_kth_identifier(account.identifier)
+	    if user.new_record?
+	      user.username = account.username
+	      user.save!
+	    end
+	    redirect_and_set_user(user)
+	  else
+	    # Handle failures
+	  end
+	end
+	
